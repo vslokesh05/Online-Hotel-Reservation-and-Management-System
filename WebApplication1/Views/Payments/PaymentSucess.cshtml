@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "PaymentSuccess";
+}
+
+<style>
+    body {
+        background-color: white;
+        color: black; /* Adjust text color for better visibility */
+        background-image: url('../../Content/image/PS.jpg');
+        background-size: cover;
+    }
+
+    .container {
+        margin-top: 100px;
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners */
+        background-color: rgba(255, 255, 255, 0.9); /* White container with transparency */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Box shadow for depth */
+        text-align: center;
+        max-width: 400px; /* Adjust maximum width as needed */
+        margin: 0 auto; /* Center the container horizontally */
+    }
+
+    .btn-primary {
+        margin-top: 20px;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h3 style="text-align: center;">Thank you for choosing us!</h3>
+        <p>Your booking has been done successfully.</p>
+        <p>What would you like to do next?</p>
+
+        <a href="@Url.Action("Logout", "AccountLogins")" class="btn btn-primary">Logout</a>
+        <a href="@Url.Action("RMlist", "RoomInfos")" class="btn btn-primary">Continue</a>
+    </div>
+</body>
+</html>

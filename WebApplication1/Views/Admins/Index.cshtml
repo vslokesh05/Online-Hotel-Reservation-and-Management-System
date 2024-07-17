@@ -1,0 +1,89 @@
+﻿@model IEnumerable<WebApplication1.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="table-container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AUserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.APassword)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.APhoneNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AEmailId)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AUserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.APassword)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.APhoneNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AEmailId)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.AdminId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.AdminId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.AdminId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .table-container {
+        background-color: white;
+        color: #333; /* Dark text */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+        }
+</style>

@@ -1,0 +1,101 @@
+﻿@model WebApplication1.Models.Payment
+
+@{
+    ViewBag.Title = "PaymentDetails";
+}
+
+<style>
+    body {
+        margin-top: 100px;
+        padding-top: 100px;
+        background-image: url('../../Content/image/pdd.jpg');
+        background-size: cover;
+        color: white; /* Text color */
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Adjust height as needed */
+    }
+
+    .card {
+        width: 300px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+        backdrop-filter: blur(5px); /* Blur effect for modern transparency */
+        color: black; /* Text color within the card */
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px; /* Adjust spacing between form groups */
+    }
+
+    .btn-green {
+        background-color: green; /* Green button background */
+        color: white; /* White text color */
+        width: 100%;
+        padding: 10px 20px; /* Padding for button */
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px green; /* 3D effect */
+        transition: box-shadow 0.3s ease;
+    }
+
+        .btn-green:hover {
+            box-shadow: 0 2px green; /* Hover effect */
+            transform: translateY(2px); /* Move button down on hover */
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Payment Details</h3>
+
+                @Html.ValidationSummary(true)
+
+                <!-- Hide ReservationId field -->
+                @Html.HiddenFor(model => model.ReservationId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PaymentMethod, htmlAttributes: new { @class = "col-md-5 col-form-label text-md-right" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.PaymentMethod, (IEnumerable<SelectListItem>)ViewBag.PaymentMethods, "Select Payment Method", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PaymentMethod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <label for="totalPrice">Total Amount:</label>
+                        @Html.DisplayFor(model => model.TotalAmount)
+                    </div>
+                </div>
+
+                @Html.HiddenFor(model => model.TotalAmount)
+                @Html.HiddenFor(model => model.TimeStamp)
+
+                <div class="form-group">
+                    <div class="col-md-10 text-center">
+                        <input type="submit" value="Confirm Booking" class="btn btn-green" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

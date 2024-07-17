@@ -1,0 +1,19 @@
+﻿@model WebApplication1.Models.Admin
+
+<h2>AdminHome</h2>
+
+@{
+    ViewBag.Title = "Admin Home";
+}
+
+<h2>Choose your action</h2>
+
+<p>You have successfully logged in to the admin panel.</p>
+
+<div>
+    <a href="@Url.Action("RoomInfoes", "Admins")">Manage Room Info</a>
+</div>
+
+<div>
+    <a href="@Url.Action("Reservations", "Admins")">Manage Reservations</a>
+</div>

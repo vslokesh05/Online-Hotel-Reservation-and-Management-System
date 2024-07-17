@@ -1,0 +1,38 @@
+﻿@model WebApplication1.Models.Admin
+
+@{
+    ViewBag.Title = "AdminLogin";
+}
+
+<h3>Admin Login</h3>
+@using (Html.BeginForm("AdminLogin", "AccountLogins", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.AUserName, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AUserName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.AUserName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.APassword, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.APassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.APassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Admin Login" class="btn btn-default" />
+        </div>
+    </div>
+}
+

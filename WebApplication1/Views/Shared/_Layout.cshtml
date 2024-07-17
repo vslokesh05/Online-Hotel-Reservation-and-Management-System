@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hotel Reservation System</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<style>
+    body {
+        background-image: url('../../Content/image/Hotel PIC.jpg');
+        background-size: cover;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center align content horizontally */
+        justify-content: center; /* Center align content vertically */
+        height: 100vh; /* Adjust to your needs */
+        text-align: center; /* Center align text */
+    }
+
+    h1 {
+        margin-right: 500px;
+        color: whitesmoke;
+        font-style: italic;
+        font-size: 90px;
+    }
+
+    h2 {
+        margin-left: 500px;
+        font-size: 90px;
+        color: whitesmoke;
+        font-style: italic;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        color: #fff; /* White text color */
+    }
+
+    .navbar-left,
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+
+        .navbar-left a,
+        .navbar-right a {
+            color: inherit; /* Inherit text color */
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+        }
+
+            .navbar-left a:hover,
+            .navbar-right a:hover {
+                text-decoration: underline;
+            }
+
+
+    footer {
+        text-align: center;
+        padding: 1rem;
+        color: #fff; /* White text color for footer */
+        margin-top: auto;
+        display: flex;
+    }
+</style>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand">𝓩𝓪𝓻𝓪 𝓗𝓸𝓽𝓮𝓵𝓼</a>
+            <a href="@Url.Action("About", "Home")">About</a>
+            <a href="@Url.Action("Contact", "Home")">Contact</a>
+        </div>
+        <div class="navbar-right">
+            <a href="@Url.Action("Signup", "AccountLogins")">Sign Up / Register</a>
+            <a href="@Url.Action("Login", "AccountLogins")">Login</a>
+            <a href="@Url.Action("Logout", "AccountLogins")">Logout</a>
+        </div>
+    </div>
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year - ZARA HOTELS</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

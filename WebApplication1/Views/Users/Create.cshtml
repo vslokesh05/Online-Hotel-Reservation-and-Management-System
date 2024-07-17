@@ -1,0 +1,141 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = "User Registration";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="signup-container">
+        <h3>User Registration</h3>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PhoneNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PhoneNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AadharNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AadharNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AadharNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="color: black;">
+    @Html.ActionLink("Back to Login", "Login", "AccountLogins")
+</div>
+
+<style>
+    body {
+        background-image: url('../../Content/image/userPic.jpg');
+        background-size: cover;
+    }
+
+    .signup-container {
+        width: 400px; /* Adjust width as needed */
+        margin: 0 auto; /* Center align horizontally */
+        padding: 20px;
+        border-radius: 10px; /* Rounded corners */
+        background-color: rgba(0, 0, 0, 0.7); /* Black with moderate transparency */
+        color: white; /* Text color */
+        text-align: center; /* Center align text */
+        margin-top: 100px; /* Adjust top margin as needed */
+    }
+
+        .signup-container h3 {
+            text-align: center;
+            font-size: 24px; /* Increase font size of the heading */
+            margin-bottom: 20px; /* Adjust bottom margin as needed */
+        }
+
+        .signup-container .form-group {
+            margin-bottom: 15px; /* Add space between each form group */
+        }
+
+        .signup-container .control-label {
+            text-align: left; /* Align labels to the left */
+            font-weight: bold;
+        }
+
+            .signup-container .control-label::after {
+                content: ":"; /* Add colon after labels */
+                margin-left: 5px; /* Adjust space between label and colon */
+            }
+
+        .signup-container input[type="submit"] {
+            display: block;
+            margin: 0 auto; /* Center the button horizontally */
+            margin-top: 20px; /* Adjust top margin as needed */
+            padding: 10px 20px; /* Adjust padding as needed */
+            font-size: 18px; /* Increase font size of the button text */
+            border-radius: 5px; /* Rounded corners for button */
+            background-color: #4CAF50; /* Green background color */
+            color: white; /* Text color */
+            border: none; /* Remove default border */
+            cursor: pointer; /* Add cursor pointer on hover */
+        }
+
+            .signup-container input[type="submit"]:hover {
+                background-color: #45a049; /* Darker green on hover */
+            }
+
+        .signup-container a {
+            display: block;
+            text-align: center;
+            color: white; /* Link color */
+            margin-top: 10px; /* Adjust margin as needed */
+            text-decoration: none; /* Remove underline */
+        }
+
+            .signup-container a:hover {
+                text-decoration: underline; /* Underline on hover */
+            }
+</style>

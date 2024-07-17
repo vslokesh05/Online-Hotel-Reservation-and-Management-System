@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<div class="contact-container">
+    <h3>@ViewBag.Title</h3>
+    <h4>ZARA HOTELS</h4>
+    <h3>ADDRESS</h3>
+
+    <address>
+        Toll Plaza, No 10, <br />
+        Old Mahabalipuram Road,<br />
+        Navalur,<br />
+        Tamil Nadu 600130<br />
+        <abbr title="Phone">Phone no:</abbr>
+        9876543210
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+</div>
+
+<style>
+    body {
+        background-image: url('../../Content/image/Hotel PIC.jpg');
+        background-size: cover;
+    }
+
+    .contact-container {
+        background-color: rgba(0, 0, 0, 0.7); /* Black background with transparency */
+        color: white;
+        padding: 20px;
+        border-radius: 15px; /* Rounded edges */
+        margin: 20px auto;
+        max-width: 800px; /* You can adjust the width as needed */
+        font-size: large;
+        font-style: italic;
+    }
+
+
+        .contact-container h3,
+        .contact-container h4,
+        .contact-container address,
+        .contact-container strong {
+            color: whitesmoke;
+        }
+
+        .contact-container a {
+            color: red;
+        }
+
+        .contact-container address {
+            margin-left: 0;
+        }
+</style>

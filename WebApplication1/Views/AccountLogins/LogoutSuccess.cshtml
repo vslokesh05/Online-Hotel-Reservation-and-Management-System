@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Success Message</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var successMessage = '@ViewBag.SuccessMessage';
+            if (successMessage) {
+                alert(successMessage);
+                // Redirect after displaying the popup message
+                window.location.href = '@Url.Action("Login", "AccountLogins")';
+            }
+        });
+    </script>
+</head>
+<body>
+    <h2>Logout Success</h2>
+    <p>Thank you for choosing us!</p>
+    <p>Please wait...</p>
+</body>
+</html>
+

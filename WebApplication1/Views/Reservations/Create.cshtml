@@ -1,0 +1,125 @@
+﻿@model WebApplication1.Models.Reservation
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style>
+    body {
+        background-image: url('../../Content/image/swimming.jpg');
+        background-size: cover;
+        color: black;
+        display: flex;
+        justify-content: center; /* Center aligns horizontally */
+        align-items: center; /* Center aligns vertically */
+        height: 100vh; /* Full viewport height */
+    }
+
+    .reservation-container {
+        width: 80%;
+        max-width: 600px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-horizontal {
+        margin-top: 20px;
+    }
+
+    .control-label {
+        font-weight: bold;
+        margin-bottom: 10px; /* Add spacing between label and input field */
+    }
+
+    .form-group {
+        margin-bottom: 20px; /* Add spacing between form groups */
+    }
+
+    .form-control {
+        width: 100%; /* Full width input fields */
+    }
+
+    .btn-default {
+        background-color: #007bff; /* Blue button */
+        color: white;
+        border: none;
+    }
+
+        .btn-default:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white;
+        }
+</style>
+
+<div class="reservation-container">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <h4>User Reservation</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+            <!-- No need to display RoomId -->
+            <!-- <div class="form-group">
+                @Html.HiddenFor(model => model.RoomId)
+            </div> -->
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NoOfPerson, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NoOfPerson, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NoOfPerson, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CheckInDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CheckInDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                    @Html.ValidationMessageFor(model => model.CheckInDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CheckOutDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CheckOutDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                    @Html.ValidationMessageFor(model => model.CheckOutDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <!-- No need to display UserId -->
+            <!-- <div class="form-group">
+                @Html.HiddenFor(model => model.UserId)
+            </div> -->
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Reserve" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div style="margin-top: 20px;">
+    @Html.ActionLink("Back to RoomList", "RMlist", "RoomInfos")
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "mm/dd/yy"  // MM/dd/yyyy format
+            });
+        });
+    </script>
+}

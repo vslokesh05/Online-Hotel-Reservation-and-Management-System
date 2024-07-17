@@ -1,0 +1,80 @@
+﻿@model IEnumerable<WebApplication1.Models.RoomInfo>
+
+@{
+    ViewBag.Title = "Room List";
+}
+
+<style>
+    body {
+        background-image: url('../../Content/image/userPic.jpg');
+        background-size: cover;
+        color: black;
+    }
+
+    .container {
+        margin-top: 100px;
+        padding-top: 20px;
+    }
+
+    .room-card {
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff; /* White background */
+    }
+
+    .room-details {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .card-text {
+        margin-bottom: 10px;
+    }
+
+    .book-now-container {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .btn-book-now {
+        background-color: #007bff; /* Blue button */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 5px;
+    }
+
+        .btn-book-now:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white;
+            text-decoration: none;
+        }
+</style>
+
+<div class="container">
+    
+
+    <div class="row">
+        <h3>Room List</h3>
+        @foreach (var roomInfo in Model)
+        {
+            <div class="col-md-4">
+                <div class="room-card">
+                    <div class="room-details">
+                        <h5 class="card-title">@roomInfo.RoomType</h5>
+                        <p class="card-text">Description: @roomInfo.Description</p>
+                        <p class="card-text">Price: ₹@roomInfo.Price</p>
+                    </div>
+                    <div class="book-now-container">
+                        <a href="@Url.Action("Create", "Reservations", new { id = roomInfo.RoomId })" class="btn btn-book-now">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

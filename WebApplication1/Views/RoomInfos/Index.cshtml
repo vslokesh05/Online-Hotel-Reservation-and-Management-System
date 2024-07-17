@@ -1,0 +1,127 @@
+﻿@model IEnumerable<WebApplication1.Models.RoomInfo>
+
+@{
+    ViewBag.Title = "Room Information";
+}
+
+<style>
+    body {
+        background-image: url('../../Content/image/Ri.jpg');
+        background-size: cover;
+        color: ghostwhite;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        color: #333; /* Black text */
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .action-links a {
+        color: #007bff;
+        margin-right: 10px;
+    }
+
+        .action-links a:hover {
+            text-decoration: none;
+        }
+
+    .links-section {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .btn-custom {
+        background-color: #28a745; /* Green background color */
+        color: #fff; /* White text color */
+        border: none; /* Remove border */
+        padding: 8px 16px; /* Padding around text */
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        transition: background-color 0.3s; /* Smooth transition for background color */
+    }
+
+        .btn-custom:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+</style>
+
+<div class="container">
+    <h2>Room Information</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-custom" })
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Admin.AName)</th>
+                <th>@Html.DisplayNameFor(model => model.RoomType)</th>
+                <th>@Html.DisplayNameFor(model => model.Size)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.RoomNo)</th>
+                <th>@Html.DisplayNameFor(model => model.Availability)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Admin.AName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RoomType)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Size)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RoomNo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td class="action-links">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.RoomId }, new { @class = "btn btn-sm btn-primary" })
+                        @Html.ActionLink("Details", "Details", new { id = item.RoomId }, new { @class = "btn btn-sm btn-info" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.RoomId }, new { @class = "btn btn-sm btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="links-section">
+        @Html.ActionLink("Back to Login", "Login", "AccountLogins", null, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Go To Reservation List", "Index", "Reservations", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

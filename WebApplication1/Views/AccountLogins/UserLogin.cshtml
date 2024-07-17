@@ -1,0 +1,65 @@
+﻿@model WebApplication1.Models.User
+
+@{
+    ViewBag.Title = "UserLogin";
+}
+<h3>User Login</h3>
+@using (Html.BeginForm("UserLogin", "AccountLogins", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.Username, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label col-md-2" })
+        </div>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="User Login" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <p>Don't have an account? @Html.ActionLink("Sign Up", "Signup", "AccountLogins", null, new { @class = "btn btn-3d" })</p>
+        </div>
+    </div>
+}
+
+<style>
+    .btn-3d {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px #0056b3;
+        text-decoration: none;
+        transition: all 0.1s ease-in-out;
+    }
+
+        .btn-3d:active {
+            box-shadow: 0 2px #0056b3;
+            transform: translateY(2px);
+        }
+
+        .btn-3d:hover {
+            background-color: #0056b3;
+        }
+</style>
+

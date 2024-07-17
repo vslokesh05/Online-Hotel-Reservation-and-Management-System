@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebApplication1.Models.Reservation>
+
+@{
+    ViewBag.Title = "Reservation";
+}
+
+<h2>Reservations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RoomInfo.RoomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfPerson)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomInfo.RoomType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfPerson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckInDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOutDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ReservationId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ReservationId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
+            </td>
+        </tr>
+    }
+
+</table>
+<style>
+    body {
+        background-image: url('../../Content/image/Signup PIC.jpg');
+        background-size: cover;
+        color: black;
+    }
+    .table {
+        background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+        border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+        width: 100%; /* Ensure table spans full width */
+    }
+
+    .table th, .table td {
+        padding: 8px; /* Adjust padding as needed */
+        text-align: left; /* Align text to the left */
+    }
+
+    .table th {
+        background-color: #f2f2f2; /* Light gray background for header */
+    }
+
+    .table td {
+        background-color: transparent; /* Ensure cells are transparent */
+    }
+
+    .table a {
+        color: dodgerblue; /* Default color for all action links */
+        margin-right: 5px; /* Add space between action links */
+        text-decoration: none; /* Remove underline from links */
+    }
+
+    .create-new-link {
+        color: blue; /* Specific color for the "Create New" link */
+        font-weight: bold; /* Make the "Create New" link bold */
+    }
+
+    .table a:hover {
+        text-decoration: underline; /* Add underline on hover for all links */
+    }
+</style>
